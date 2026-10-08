@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沖繩 5 天 4 夜最終版行程表</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f8fafc;
+        }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            bottom: 24px;
+            left: 20px;
+            width: 2px;
+            background-color: #cbd5e1;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="text-slate-800 min-h-screen pb-12">
+
+    <!-- Header / Banner -->
+    <header class="bg-gradient-to-r from-sky-600 to-blue-700 text-white shadow-lg">
+        <div class="max-w-5xl mx-auto px-4 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <span class="bg-sky-500/40 text-sky-100 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                        🇯🇵 Okinawa Trip 2026
+                    </span>
+                    <h1 class="text-3xl md:text-4xl font-bold mt-2">沖繩 5 天 4 夜最終版行程表</h1>
+                    <p class="text-sky-100 mt-1 text-sm md:text-base">
+                        <i class="fa-regular fa-calendar-check mr-1.5"></i> 11/6（五）– 11/10（二） | 主題：WWW!!26 音樂祭、美浜度假、那霸美食購物
+                    </p>
+                </div>
+                <button onclick="window.print()" class="bg-white/10 hover:bg-white/20 text-white text-sm px-4 py-2 rounded-lg border border-white/20 transition flex items-center gap-2">
+                    <i class="fa-solid fa-print"></i> 列印 / 存為 PDF
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation / Tabs -->
+    <div class="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4">
+            <nav class="flex space-x-2 md:space-x-4 overflow-x-auto py-3 no-scrollbar" id="nav-tabs">
+                <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn active px-4 py-2 text-sm font-bold rounded-lg bg-sky-50 text-sky-700 whitespace-nowrap transition">
+                    <i class="fa-solid fa-list-check mr-1"></i> 行程總覽
+                </button>
+                <button onclick="switchTab('day1')" id="tab-day1" class="tab-btn px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 rounded-lg whitespace-nowrap transition">
+                    11/6 (五) 美浜度假
+                </button>
+                <button onclick="switchTab('day2')" id="tab-day2" class="tab-btn px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 rounded-lg whitespace-nowrap transition">
+                    11/7 (六) WWW!!26 D1
+                </button>
+                <button onclick="switchTab('day3')" id="tab-day3" class="tab-btn px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 rounded-lg whitespace-nowrap transition">
+                    11/8 (日) WWW!!26 D2
+                </button>
+                <button onclick="switchTab('day4')" id="tab-day4" class="tab-btn px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 rounded-lg whitespace-nowrap transition">
+                    11/9 (一) 那霸美食秀場
+                </button>
+                <button onclick="switchTab('day5')" id="tab-day5" class="tab-btn px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 rounded-lg whitespace-nowrap transition">
+                    11/10 (二) 波上宮與返台
+                </button>
+            </nav>
+        </div>
+    </div>
+
+    <main class="max-w-5xl mx-auto px-4 mt-6">
+
+        <!-- OVERVIEW SECTION -->
+        <section id="content-overview" class="tab-content block space-y-6">
+            
+            <!-- Quick Summary Table -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="p-4 bg-slate-50 border-b border-slate-200 font-bold text-slate-700 flex items-center gap-2">
+                    <i class="fa-solid fa-calendar-days text-sky-600"></i> 全程每日亮點與住宿總覽
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-600 border-b border-slate-200">
+                                <th class="p-3">日期</th>
+                                <th class="p-3">住宿地點</th>
+                                <th class="p-3">每日重點行程</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-sky-50/50 transition">
+                                <td class="p-3 font-semibold text-slate-900 whitespace-nowrap">11/6 (五)</td>
+                                <td class="p-3 text-sky-700 font-medium">美浜北谷露台度假村</td>
+                                <td class="p-3 text-slate-600">✈️ 抵達 → 美國村/Depot Island → Sunset Beach 看夕陽 → 沖繩麵/燒肉/阿古豬晚宴</td>
+                            </tr>
+                            <tr class="hover:bg-sky-50/50 transition">
+                                <td class="p-3 font-semibold text-slate-900 whitespace-nowrap">11/7 (六)</td>
+                                <td class="p-3 text-sky-700 font-medium">美浜北谷露台度假村</td>
+                                <td class="p-3 text-slate-600">🎵 <strong>WWW!!26 DAY 1</strong>（宜野灣港 Marina）→ 晚上回北谷美國村宵夜</td>
+                            </tr>
+                            <tr class="hover:bg-sky-50/50 transition">
+                                <td class="p-3 font-semibold text-slate-900 whitespace-nowrap">11/8 (日)</td>
+                                <td class="p-3 text-sky-700 font-medium">美浜北谷露台度假村</td>
+                                <td class="p-3 text-slate-600">🎵 <strong>WWW!!26 DAY 2</strong>（宜野灣港 Marina）→ 回北谷 Taco Rice + Blue Seal</td>
+                            </tr>
+                            <tr class="hover:bg-sky-50/50 transition">
+                                <td class="p-3 font-semibold text-slate-900 whitespace-nowrap">11/9 (一)</td>
+                                <td class="p-3 text-emerald-700 font-medium">雄志さんのアパートメント<br><span class="text-xs text-slate-500">(久茂地 2-20-7)</span></td>
+                                <td class="p-3 text-slate-600">北谷 ➔ 那霸久茂地 → 牧志市場海鮮 → 壺屋通與國際通 → 20:30 Churasun6 秀場 → 沖繩麵宵夜</td>
+                            </tr>
+                            <tr class="hover:bg-sky-50/50 transition">
+                                <td class="p-3 font-semibold text-slate-900 whitespace-nowrap">11/10 (二)</td>
+                                <td class="p-3 text-slate-500 font-medium">— (返台)</td>
+                                <td class="p-3 text-slate-600">波上宮祈福 ➔ 沖繩麵 EIBUN ➔ 伴手禮最後補貨 ➔ 18:00 前抵達那霸機場 ➔ ✈️ 21:00 班機回台</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Highlights Grid -->
+            <div class="grid md:grid-cols-2 gap-4">
+                <!-- Festival Info Box -->
+                <div class="bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200 rounded-xl p-5 shadow-sm">
+                    <div class="flex items-center gap-2 text-purple-800 font-bold text-base mb-2">
+                        <i class="fa-solid fa-compact-disc text-purple-600"></i> 音樂祭 What a Wonderful World!!26
+                    </div>
+                    <ul class="text-sm space-y-2 text-slate-700">
+                        <li><strong class="text-purple-900">地點：</strong> 宜野灣港 Marina / Tropical Beach</li>
+                        <li><strong class="text-purple-900">時間：</strong> 11:00 開場 | 13:00 開演 | 約 20:30 結束</li>
+                        <li><strong class="text-purple-900">交通：</strong> 建議直接從北谷搭乘計程車往返，避開大眾運輸人潮。</li>
+                        <li class="bg-purple-100/80 p-2 rounded text-xs text-purple-900 mt-2">
+                            <i class="fa-solid fa-circle-exclamation mr-1"></i> <strong>提示：</strong>現場節目請隨時參考活動官方 App / 官網之最新 Timetable。
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Souvenirs Guide -->
+                <div class="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-xl p-5 shadow-sm">
+                    <div class="flex items-center gap-2 text-amber-800 font-bold text-base mb-2">
+                        <i class="fa-solid fa-bag-shopping text-amber-600"></i> 必買購物與紀念品清單
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 text-xs">
+                        <span class="bg-white border border-amber-200 text-amber-900 px-2.5 py-1 rounded-full shadow-sm">🥇 小型風獅爺 (シーサー)</span>
+                        <span class="bg-white border border-amber-200 text-amber-900 px-2.5 py-1 rounded-full shadow-sm">🥈 やちむん陶器/杯子</span>
+                        <span class="bg-white border border-amber-200 text-amber-900 px-2.5 py-1 rounded-full shadow-sm">🥉 紅芋塔 + 金楚糕</span>
+                        <span class="bg-white border border-amber-200 text-amber-900 px-2.5 py-1 rounded-full shadow-sm">✨ 雪鹽 / 黑糖</span>
+                        <span class="bg-white border border-amber-200 text-amber-900 px-2.5 py-1 rounded-full shadow-sm">🍶 小瓶泡盛酒</span>
+                        <span class="bg-white border border-amber-200 text-amber-900 px-2.5 py-1 rounded-full shadow-sm">🎵 WWW!!26 限定周邊</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- DAY 1 -->
+        <section id="content-day1" class="tab-content hidden space-y-4">
+            <div class="bg-sky-600 text-white p-4 rounded-xl shadow-sm flex justify-between items-center">
+                <div>
+                    <h2 class="text-xl font-bold">11/6（五）抵達沖繩 → 北谷美浜度假</h2>
+                    <p class="text-sky-100 text-sm">住宿：美浜北谷露台度假村</p>
+                </div>
+                <span class="bg-sky-500/50 px-3 py-1 rounded-full text-xs font-semibold">DAY 1</span>
+            </div>
+
+            <div class="relative timeline-line pl-6 space-y-6">
+                <!-- Timeline Item -->
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center font-bold text-sm flex-shrink-0">07:00</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">✈️ 抵達那霸機場 &amp; 出關</h3>
+                        <p class="text-sm text-slate-600 mt-1">提領行李並完成入境手續，預計 09:00 前順利準備出發。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center font-bold text-sm flex-shrink-0">09:00</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">🚌 直奔北谷 &amp; 飯店寄放行李</h3>
+                        <p class="text-sm text-slate-600 mt-1">搭乘公車/接駁車前往美浜，約 10:00 抵達「美浜北谷露台度假村」辦理寄放行李。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center font-bold text-sm flex-shrink-0">10:30</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">🌴 美國村 &amp; Depot Island 漫步</h3>
+                        <p class="text-sm text-slate-600 mt-1">景點全區可步行抵達。建議順序：美國村 ➔ Depot Island 🛍️ ➔ 沿海散步道 ➔ Sunset Beach。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center font-bold text-sm flex-shrink-0">14:00</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">🍜 午餐：浜屋沖繩麵 (Hamaya Ramen)</h3>
+                        <p class="text-sm text-slate-600 mt-1">沖繩麵首選排隊名店，享用軟嫩清爽的軟骨排骨麵。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center font-bold text-sm flex-shrink-0">15:30</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">☕ 飯店進房 Check-in &amp; 下午茶</h3>
+                        <p class="text-sm text-slate-600 mt-1">返回美浜飯店稍作休息，可於周邊品嚐海景咖啡或 Blue Seal 冰淇淋。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center font-bold text-sm flex-shrink-0">17:00</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">🌅 Sunset Beach 夕陽時間</h3>
+                        <p class="text-sm text-slate-600 mt-1">11 月份天黑較早，此時段至海灘欣賞落日極為夢幻。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center font-bold text-sm flex-shrink-0">19:00</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">🥩 第一晚盛宴：特色燒肉 / 阿古豬</h3>
+                        <p class="text-sm text-slate-600 mt-1">推薦「Shimabutaya Tonkatsu Dining」(4.7★) 品嚐阿古豬料理，或享用北谷和牛燒肉。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DAY 2 -->
+        <section id="content-day2" class="tab-content hidden space-y-4">
+            <div class="bg-purple-600 text-white p-4 rounded-xl shadow-sm flex justify-between items-center">
+                <div>
+                    <h2 class="text-xl font-bold">11/7（六）WWW!!26 DAY 1</h2>
+                    <p class="text-purple-100 text-sm">會場：宜野灣港 Marina / Tropical Beach</p>
+                </div>
+                <span class="bg-purple-500/50 px-3 py-1 rounded-full text-xs font-semibold">DAY 2</span>
+            </div>
+
+            <div class="relative timeline-line pl-6 space-y-6">
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-sm flex-shrink-0">09:00</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">☀️ 起床與營養早餐</h3>
+                        <p class="text-sm text-slate-600 mt-1">今天不安排其他大型景點，專心為音樂祭補充電力。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-sm flex-shrink-0">10:30</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">🚕 計程車前往宜野灣會場</h3>
+                        <p class="text-sm text-slate-600 mt-1">從北谷搭乘計程車直達 Tropical Beach，省時且避免擠公車。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-purple-200 shadow-sm bg-purple-50/30">
+                    <div class="w-10 h-10 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-sm flex-shrink-0">11:00</div>
+                    <div>
+                        <h3 class="font-bold text-purple-900 text-base">🔥 WWW!!26 DAY 1 開唱狂歡 (13:00 開演)</h3>
+                        <p class="text-sm text-slate-700 mt-1">
+                            <strong>重點演出陣容：</strong> MONGOL800, AI, ACIDMAN, ELLEGARDEN, かりゆし58, 竹原ピストル, Rasen Okinawa, WANIMA ...等。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-sm flex-shrink-0">20:30</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">🚕 演出結束返回北谷</h3>
+                        <p class="text-sm text-slate-600 mt-1">預計 20:30 結束，搭乘計程車返回北谷美國村飯店區域。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-sm flex-shrink-0">21:30</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">🍺 美國村周邊夜宵與休息</h3>
+                        <p class="text-sm text-slate-600 mt-1">於飯店附近居酒屋或餐廳吃宵夜，放鬆身心準備明天的 DAY 2。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DAY 3 -->
+        <section id="content-day3" class="tab-content hidden space-y-4">
+            <div class="bg-purple-600 text-white p-4 rounded-xl shadow-sm flex justify-between items-center">
+                <div>
+                    <h2 class="text-xl font-bold">11/8（日）WWW!!26 DAY 2</h2>
+                    <p class="text-purple-100 text-sm">會場：宜野灣港 Marina / Tropical Beach</p>
+                </div>
+                <span class="bg-purple-500/50 px-3 py-1 rounded-full text-xs font-semibold">DAY 3</span>
+            </div>
+
+            <div class="relative timeline-line pl-6 space-y-6">
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-sm flex-shrink-0">09:00</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">☀️ 充分休息與備戰早餐</h3>
+                        <p class="text-sm text-slate-600 mt-1">補足體力與防曬，攜帶充足的水分。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-sm flex-shrink-0">10:30</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">🚕 搭車前往宜野灣會場</h3>
+                        <p class="text-sm text-slate-600 mt-1">搭乘計程車抵達會場，11:00 入場。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-purple-200 shadow-sm bg-purple-50/30">
+                    <div class="w-10 h-10 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-sm flex-shrink-0">11:00</div>
+                    <div>
+                        <h3 class="font-bold text-purple-900 text-base">🔥 WWW!!26 DAY 2 狂歡開唱 (13:00 開演)</h3>
+                        <p class="text-sm text-slate-700 mt-1">
+                            <strong>重點演出陣容：</strong> MONGOL800, ウルフルズ, 黒夢, サンボマスター, 渋谷すばる, HANA, MAN WITH A MISSION, The Ravens ...等。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-sm flex-shrink-0">20:30</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">🚕 離場返程</h3>
+                        <p class="text-sm text-slate-600 mt-1">音樂祭落幕，搭乘計程車回到北谷。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-sm flex-shrink-0">21:30</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">🌮 慶功美食：Taco Rice + Blue Seal</h3>
+                        <p class="text-sm text-slate-600 mt-1">不吃太正式，以經典的沖繩塔可飯與 Blue Seal 冰淇淋美味收尾！</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DAY 4 -->
+        <section id="content-day4" class="tab-content hidden space-y-4">
+            <div class="bg-emerald-600 text-white p-4 rounded-xl shadow-sm flex justify-between items-center">
+                <div>
+                    <h2 class="text-xl font-bold">11/9（一）北谷退房 ➔ 那霸市區精華巡禮</h2>
+                    <p class="text-emerald-100 text-sm">住宿：雄志さんのアパートメント (那霸市久茂地 2-20-7)</p>
+                </div>
+                <span class="bg-emerald-500/50 px-3 py-1 rounded-full text-xs font-semibold">DAY 4</span>
+            </div>
+
+            <div class="relative timeline-line pl-6 space-y-6">
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-sm flex-shrink-0">09:00</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">🏨 北谷退房 ➔ 前往那霸久茂地</h3>
+                        <p class="text-sm text-slate-600 mt-1">建議直接搭計程車移防那霸（省去公車轉乘負擔）。約 11:00 抵達「雄志さんのアパートメント」寄放行李。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-sm flex-shrink-0">11:30</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">🍜 午餐：OKINAWA SOBA DEN (久茂地)</h3>
+                        <p class="text-sm text-slate-600 mt-1">於住宿周邊享用高評價沖繩麵 (4.1★)。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-sm flex-shrink-0">13:00</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">🐟 第一牧志公設市場</h3>
+                        <p class="text-sm text-slate-600 mt-1">品嚐新鮮海鮮、沖繩水果、海葡萄與花生豆腐 (ジーマーミ豆腐)，不需吃太飽留胃給晚餐。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-sm flex-shrink-0">14:30</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">🏺 壺屋やちむん通 &amp; 🛍️ 國際通商店街</h3>
+                        <p class="text-sm text-slate-600 mt-1">逛陶藝街挑選小型風獅爺與陶杯。16:00 漫步國際通比價，可先至 Washita Shop 買第一輪伴手禮。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-sm flex-shrink-0">18:30</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">🍽️ 秀前晚餐：沖繩傳統料理 / 阿古豬</h3>
+                        <p class="text-sm text-slate-600 mt-1">推薦 Yuunangi (4.5★) 或 Shimabutaya，稍微適量享用沖繩風味手路菜。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-amber-300 bg-amber-50/50 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-sm flex-shrink-0">20:00</div>
+                    <div>
+                        <h3 class="font-bold text-amber-900 text-base">👼 重頭戲：Churasun6 (63ANGEL 沖繩體驗)</h3>
+                        <p class="text-sm text-slate-700 mt-1">
+                            地點：那霸市松山 1-5-1 (ナムラプラザビル 2F)。從久茂地住宿直接步行前往。<br>
+                            預計目標：<strong>20:30 第一部 SHOW</strong> (20:00 OPEN，請提前10分鐘到場)。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-sm flex-shrink-0">22:00</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">🍜 深夜宵夜：OKINAWA SOBA DEN</h3>
+                        <p class="text-sm text-slate-600 mt-1">觀賞完精彩演出後，步行享用深夜沖繩麵，滿足地回久茂地民宿休息。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DAY 5 -->
+        <section id="content-day5" class="tab-content hidden space-y-4">
+            <div class="bg-amber-600 text-white p-4 rounded-xl shadow-sm flex justify-between items-center">
+                <div>
+                    <h2 class="text-xl font-bold">11/10（二）波上宮 ➔ 採買 ➔ 返台 (晚班機 21:00)</h2>
+                    <p class="text-amber-100 text-sm">交通：國際通與那霸機場</p>
+                </div>
+                <span class="bg-amber-500/50 px-3 py-1 rounded-full text-xs font-semibold">DAY 5</span>
+            </div>
+
+            <div class="relative timeline-line pl-6 space-y-6">
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-sm flex-shrink-0">09:00</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">⛩️ 波上宮參拜 &amp; 波之上海灘散步</h3>
+                        <p class="text-sm text-slate-600 mt-1">從久茂地前往波上宮 (4.4★) 祈福拍照，並於海灘漫步。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-sm flex-shrink-0">11:30</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">🍜 沖繩麵 EIBUN (壺屋名店)</h3>
+                        <p class="text-sm text-slate-600 mt-1">前往壺屋附近的知名創意沖繩麵名店 EIBUN (4.3★) 吃午餐。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-sm flex-shrink-0">13:00</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">🎁 最後伴手禮大採買</h3>
+                        <p class="text-sm text-slate-600 mt-1">補齊紅芋塔、金楚糕、雪鹽、黑糖、泡盛酒與 WWW!!26 周邊。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-sm flex-shrink-0">16:00</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">🧳 返回久茂地拿行李</h3>
+                        <p class="text-sm text-slate-600 mt-1">回到久茂地住宿處提領寄放的行李。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-sm flex-shrink-0">17:30</div>
+                    <div>
+                        <h3 class="font-bold text-slate-800">✈️ 抵達那霸機場</h3>
+                        <p class="text-sm text-slate-600 mt-1">預計 18:00 前辦理登機與託運，充裕逛免稅店或享用機場晚餐。</p>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex gap-4 bg-sky-600 text-white p-4 rounded-xl shadow-md">
+                    <div class="w-10 h-10 rounded-full bg-white/20 text-white flex items-center justify-center font-bold text-sm flex-shrink-0">21:00</div>
+                    <div>
+                        <h3 class="font-bold text-base">✈️ 起飛返回台灣</h3>
+                        <p class="text-sm text-sky-100 mt-1">帶著美好的沖繩音樂祭與美食記憶順利返家！</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        function switchTab(tabId) {
+            // Hide all tab content
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.add('hidden'));
+
+            // Show target content
+            const targetContent = document.getElementById('content-' + tabId);
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+            }
+
+            // Update tab button active styles
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-sky-50', 'text-sky-700', 'font-bold');
+                btn.classList.add('text-slate-600', 'font-medium');
+            });
+
+            const activeBtn = document.getElementById('tab-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-sky-50', 'text-sky-700', 'font-bold');
+                activeBtn.classList.remove('text-slate-600', 'font-medium');
+            }
+        }
+    </script>
+</body>
+</html>
