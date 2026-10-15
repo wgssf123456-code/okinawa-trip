@@ -15,6 +15,7 @@
             --text: #2b2d42;
             --text-light: #6c757d;
             --map-btn: #1a73e8;
+            --jt-btn: #2e7d32;
         }
 
         * {
@@ -63,12 +64,12 @@
 
         .tab-btn {
             flex: 1;
-            min-width: 65px;
-            padding: 12px 6px;
+            min-width: 60px;
+            padding: 12px 5px;
             text-align: center;
             background: none;
             border: none;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             font-weight: 600;
             color: var(--text-light);
             cursor: pointer;
@@ -213,7 +214,7 @@
             margin-top: 4px;
         }
 
-        /* Google Map Button */
+        /* Google Map & JT Button */
         .map-btn {
             display: inline-flex;
             align-items: center;
@@ -231,6 +232,60 @@
 
         .map-btn:hover {
             background-color: #d2e3fc;
+        }
+
+        .jt-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background-color: #e8f5e9;
+            color: var(--jt-btn);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 16px;
+            text-decoration: none;
+            transition: background 0.2s;
+            border: 1px solid #c8e6c9;
+        }
+
+        .jt-btn:hover {
+            background-color: #c8e6c9;
+        }
+
+        .jt-banner {
+            background: linear-gradient(135deg, #2e7d32, #43a047);
+            color: white;
+            padding: 14px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .jt-banner-text h3 {
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+
+        .jt-banner-text p {
+            font-size: 0.78rem;
+            opacity: 0.9;
+        }
+
+        .jt-banner-link {
+            background: white;
+            color: #2e7d32;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .note-box {
@@ -269,7 +324,8 @@
         <button class="tab-btn" onclick="switchTab('day3')">D3 11/8</button>
         <button class="tab-btn" onclick="switchTab('day4')">D4 11/9</button>
         <button class="tab-btn" onclick="switchTab('day5')">D5 11/10</button>
-        <button class="tab-btn" onclick="switchTab('beyblade')">⚙️ 戰鬥陀螺</button>
+        <button class="tab-btn" onclick="switchTab('beyblade')">⚙️ 陀螺</button>
+        <button class="tab-btn" onclick="switchTab('smoking')">🚬 吸菸區</button>
     </nav>
 
     <div class="container">
@@ -644,6 +700,83 @@
                             <a href="https://www.google.com/maps/search/?api=1&query=BOOK+OFF+Naha+Oroku" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
                         <div class="desc">挖寶二手罕見零件、舊世代陀螺或單零件特賣區（離機場不遠）。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SMOKING MAP TAB -->
+        <div id="smoking" class="tab-content">
+            <!-- CLUB JT BANNER -->
+            <div class="jt-banner">
+                <div class="jt-banner-text">
+                    <h3>🚬 CLUB JT 日本官方吸菸區地圖</h3>
+                    <p>即時定位搜尋日本全域合法吸菸所與友善餐廳</p>
+                </div>
+                <a href="https://www.clubjt.jp/map/?date=20261016" target="_blank" class="jt-banner-link">開啟 CLUB JT 地圖 ➔</a>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-title">🚬 沖繩合法指定吸菸區 (Smoking Areas)</div>
+                    <div class="day-badge">吸菸地圖</div>
+                </div>
+                <div class="timeline">
+                    <div class="item">
+                        <div class="time">日本官方地圖</div>
+                        <div class="location">
+                            <span>🌐 CLUB JT 日本全境即時吸菸地圖</span>
+                            <a href="https://www.clubjt.jp/map/?date=20261016" target="_blank" class="jt-btn">🟢 CLUB JT</a>
+                        </div>
+                        <div class="desc">JT 煙草官方即時地圖，可定位搜尋周邊合法吸菸室與允許吸菸的居酒屋/咖啡廳。</div>
+                    </div>
+                    <div class="item">
+                        <div class="time">那霸機場 (Naha Airport)</div>
+                        <div class="location">
+                            <span>✈️ 那霸機場 戶外指定吸菸室</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Naha+Airport+Smoking+Area" target="_blank" class="map-btn">📍 地圖</a>
+                        </div>
+                        <div class="desc">1F 國內線/國際線抵達大廳走出戶外處，皆設有專用吸菸室。</div>
+                    </div>
+                    <div class="item">
+                        <div class="time">北谷美浜 (美國村)</div>
+                        <div class="location">
+                            <span>🌴 Depot Island 沿海指定吸菸點</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Depot+Island+Chatan" target="_blank" class="map-btn">📍 地圖</a>
+                        </div>
+                        <div class="desc">美國村商場內禁止邊走邊抽，請至海濱露台側或商場角落指定菸灰缸處。</div>
+                    </div>
+                    <div class="item">
+                        <div class="time">北谷美浜 (美國村)</div>
+                        <div class="location">
+                            <span>🛍️ AEON 北谷店 戶外吸菸室</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=AEON+Chatan+Shopping+Center" target="_blank" class="map-btn">📍 地圖</a>
+                        </div>
+                        <div class="desc">AEON 一樓商場戶外入口旁，設有獨立隔間吸菸室。</div>
+                    </div>
+                    <div class="item">
+                        <div class="time">宜野灣 (音樂祭會場)</div>
+                        <div class="location">
+                            <span>🎸 宜野灣港 Marina / Tropical Beach 吸菸區</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Ginowan+Tropical+Beach" target="_blank" class="map-btn">📍 地圖</a>
+                        </div>
+                        <div class="desc">音樂祭會場內設有官方指定吸菸專區，會場外海灘園區亦有固定菸灰缸點。</div>
+                    </div>
+                    <div class="item">
+                        <div class="time">那霸久茂地 (住宿周邊)</div>
+                        <div class="location">
+                            <span>🏬 [Palette Kumoji](http://googleusercontent.com/map_location_reference/0) (RYUBO 百貨) 戶外吸菸區</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Palette+Kumoji" target="_blank" class="map-btn">📍 地圖</a>
+                        </div>
+                        <div class="desc">久茂地 2-20-7 住宿步行可達！百貨一樓戶外廣場設有指定吸菸區。</div>
+                    </div>
+                    <div class="item">
+                        <div class="time">那霸國際通</div>
+                        <div class="location">
+                            <span>🐧 唐吉訶德 國際通店 專屬吸菸點</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Don+Quijote+Kokusai+Dori" target="_blank" class="map-btn">📍 地圖</a>
+                        </div>
+                        <div class="desc">國際通全線禁止路邊吸菸！可至唐吉訶德頂樓或快活 CLUB 內設吸菸室。</div>
                     </div>
                 </div>
             </div>
