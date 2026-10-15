@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>沖繩 11/6～11/10 自由行最終版行程</title>
+    <title>🇯🇵 沖繩 11/6～11/10 自由行最終版行程表</title>
     <style>
         :root {
             --primary: #0077b6;
-            --primary-dark: #023e8a;
-            --primary-light: #00b4d8;
+            --primary-light: #90e0ef;
+            --secondary: #00b4d8;
             --accent: #ffb703;
-            --accent-orange: #fb8500;
-            --bg: #f4f6f9;
+            --bg: #f8f9fa;
             --card-bg: #ffffff;
-            --text: #1d2d44;
-            --text-muted: #6c757d;
-            --border: #e2e8f0;
-            --map-btn-bg: #e8f0fe;
-            --map-btn-text: #1a73e8;
+            --text: #2b2d42;
+            --text-light: #6c757d;
+            --map-btn: #1a73e8;
         }
 
         * {
@@ -25,31 +22,25 @@
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             background-color: var(--bg);
             color: var(--text);
-            line-height: 1.5;
+            line-height: 1.6;
             padding-bottom: 70px;
         }
 
-        /* Header */
         header {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+            background: linear-gradient(135deg, #0077b6, #00b4d8);
             color: white;
             padding: 20px 16px;
             text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         header h1 {
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-size: 1.4rem;
             margin-bottom: 4px;
         }
 
@@ -58,118 +49,132 @@
             opacity: 0.9;
         }
 
-        /* Navigation Tabs */
-        .tab-nav {
+        .nav-tabs {
             display: flex;
             background: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
             overflow-x: auto;
             white-space: nowrap;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 65px;
-            z-index: 99;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .tab-nav::-webkit-scrollbar {
-            display: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
         .tab-btn {
-            flex: 0 0 auto;
-            padding: 12px 16px;
-            border: none;
+            flex: 1;
+            min-width: 65px;
+            padding: 12px 6px;
+            text-align: center;
             background: none;
-            font-size: 0.9rem;
+            border: none;
+            font-size: 0.82rem;
             font-weight: 600;
-            color: var(--text-muted);
+            color: var(--text-light);
             cursor: pointer;
             border-bottom: 3px solid transparent;
-            transition: all 0.2s ease;
+            transition: all 0.2s;
         }
 
         .tab-btn.active {
             color: var(--primary);
             border-bottom-color: var(--primary);
-            background-color: #f0f9ff;
+            background: #f0f9ff;
         }
 
-        /* Container & Panels */
         .container {
-            max-width: 720px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 16px;
         }
 
-        .tab-panel {
+        .tab-content {
             display: none;
-            animation: fadeIn 0.25s ease-in-out;
         }
 
-        .tab-panel.active {
+        .tab-content.active {
             display: block;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(4px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* General Card Styling */
-        .card {
+        /* Overview Table */
+        .overview-card {
             background: var(--card-bg);
             border-radius: 12px;
             padding: 16px;
-            margin-bottom: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            border: 1px solid var(--border);
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
 
-        .card-title {
+        .overview-title {
             font-size: 1.1rem;
             font-weight: bold;
-            color: var(--primary-dark);
+            color: var(--primary);
             margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
         }
 
-        /* Table */
         .overview-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
         }
 
         .overview-table th, .overview-table td {
-            padding: 10px 8px;
+            padding: 10px 6px;
             text-align: left;
             border-bottom: 1px solid #edf2f7;
         }
 
         .overview-table th {
-            color: var(--text-muted);
+            color: var(--text-light);
             font-weight: 600;
-            background: #f8fafc;
         }
 
-        /* Timeline Items */
+        /* Day Cards */
+        .day-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            border: 1px solid #e2e8f0;
+        }
+
+        .day-header {
+            background: #f1f5f9;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .day-title {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .day-badge {
+            background: var(--primary);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
+
         .timeline {
-            position: relative;
-            padding-left: 8px;
+            padding: 16px;
         }
 
         .item {
             position: relative;
-            padding-left: 22px;
-            padding-bottom: 20px;
-            border-left: 2px solid #cbd5e1;
+            padding-left: 20px;
+            margin-bottom: 18px;
+            border-left: 2px solid var(--primary-light);
         }
 
         .item:last-child {
-            padding-bottom: 0;
+            margin-bottom: 0;
             border-left-color: transparent;
         }
 
@@ -177,121 +182,76 @@
             content: '';
             position: absolute;
             left: -6px;
-            top: 4px;
+            top: 5px;
             width: 10px;
             height: 10px;
             border-radius: 50%;
             background: var(--primary);
-            box-shadow: 0 0 0 3px #ffffff;
         }
 
-        .item-time {
+        .time {
             font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--primary-light);
+            font-weight: bold;
+            color: var(--secondary);
             margin-bottom: 2px;
         }
 
-        .item-header {
+        .location {
+            font-size: 0.98rem;
+            font-weight: bold;
+            color: var(--text);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 8px;
-            margin-bottom: 4px;
             flex-wrap: wrap;
+            gap: 6px;
         }
 
-        .item-title {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text);
+        .desc {
+            font-size: 0.85rem;
+            color: #4a5568;
+            margin-top: 4px;
         }
 
-        .item-desc {
-            font-size: 0.88rem;
-            color: #475569;
-        }
-
-        /* Buttons & Tags */
+        /* Google Map Button */
         .map-btn {
             display: inline-flex;
             align-items: center;
-            gap: 3px;
-            background-color: var(--map-btn-bg);
-            color: var(--map-btn-text);
-            font-size: 0.78rem;
+            gap: 4px;
+            background-color: #e8f0fe;
+            color: var(--map-btn);
+            font-size: 0.75rem;
             font-weight: 600;
             padding: 4px 10px;
-            border-radius: 20px;
+            border-radius: 16px;
             text-decoration: none;
-            border: 1px solid #c2e7ff;
-            transition: all 0.2s;
-            white-space: nowrap;
+            transition: background 0.2s;
+            border: 1px solid #d2e3fc;
         }
 
-        .map-btn:active {
-            background-color: #c2e7ff;
-            transform: scale(0.96);
+        .map-btn:hover {
+            background-color: #d2e3fc;
         }
-
-        .badge {
-            display: inline-block;
-            font-size: 0.72rem;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-weight: 600;
-            margin-right: 4px;
-        }
-
-        .badge-blue { background: #e0f2fe; color: #0369a1; }
-        .badge-orange { background: #ffedd5; color: #c2410c; }
-        .badge-green { background: #dcfce7; color: #15803d; }
 
         .note-box {
-            background: #fffbe3;
+            background: #fffbeb;
             border-left: 4px solid var(--accent);
-            padding: 10px 12px;
+            padding: 8px 10px;
             border-radius: 4px;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             margin-top: 8px;
-            color: #854d0e;
+            color: #b45309;
         }
 
-        /* Bottom Sticky Bar for Mobile Quick Jump */
-        .bottom-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #ffffff;
-            border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: space-around;
-            padding: 8px 0;
-            z-index: 1000;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-        }
-
-        .bottom-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .tag {
+            display: inline-block;
+            background: #e2e8f0;
+            color: #475569;
             font-size: 0.7rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .bottom-btn.active {
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .bottom-btn span {
-            font-size: 1.1rem;
-            margin-bottom: 2px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 4px;
+            margin-top: 4px;
         }
     </style>
 </head>
@@ -302,449 +262,405 @@
         <p>11/6（五）～ 11/10（二）｜音樂祭 ✕ 自由行</p>
     </header>
 
-    <!-- 頂部頁籤選單 -->
-    <nav class="tab-nav">
-        <button class="tab-btn active" onclick="switchTab('overview')">📌 行程總覽</button>
-        <button class="tab-btn" onclick="switchTab('day1')">11/6 DAY 1</button>
-        <button class="tab-btn" onclick="switchTab('day2')">11/7 DAY 2</button>
-        <button class="tab-btn" onclick="switchTab('day3')">11/8 DAY 3</button>
-        <button class="tab-btn" onclick="switchTab('day4')">11/9 DAY 4</button>
-        <button class="tab-btn" onclick="switchTab('day5')">11/10 DAY 5</button>
-        <button class="tab-btn" onclick="switchTab('info')">🎪 音樂祭與購物</button>
+    <nav class="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('overview')">總覽</button>
+        <button class="tab-btn" onclick="switchTab('day1')">D1 11/6</button>
+        <button class="tab-btn" onclick="switchTab('day2')">D2 11/7</button>
+        <button class="tab-btn" onclick="switchTab('day3')">D3 11/8</button>
+        <button class="tab-btn" onclick="switchTab('day4')">D4 11/9</button>
+        <button class="tab-btn" onclick="switchTab('day5')">D5 11/10</button>
+        <button class="tab-btn" onclick="switchTab('beyblade')">⚙️ 戰鬥陀螺</button>
     </nav>
 
     <div class="container">
 
-        <!-- TAB 0: 行程總覽 -->
-        <div id="overview" class="tab-panel active">
-            <div class="card">
-                <div class="card-title">📅 5 天行程重點與住宿總覽</div>
+        <!-- 總覽頁籤 -->
+        <div id="overview" class="tab-content active">
+            <div class="overview-card">
+                <div class="overview-title">📅 行程總覽與住宿</div>
                 <table class="overview-table">
                     <thead>
                         <tr>
                             <th>日期</th>
-                            <th>住宿</th>
-                            <th>每日亮點說明</th>
+                            <th>住宿地點</th>
+                            <th>當日主題與亮點</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><b>11/6 (五)</b></td>
-                            <td>北谷露台度假村</td>
-                            <td>抵達沖繩 ✈️ 美國村 / Sunset Beach / 燒肉</td>
+                            <td>美浜北谷露台度假村</td>
+                            <td>抵達 ✈️ 美國村 / 歐姆蛋塔可飯 / Sunset Beach / 琉球之牛燒肉</td>
                         </tr>
                         <tr>
                             <td><b>11/7 (六)</b></td>
-                            <td>北谷露台度假村</td>
-                            <td>🎵 WWW!!26 音樂祭 DAY 1 搖滾現場</td>
+                            <td>美浜北谷露台度假村</td>
+                            <td>🎵 WWW!!26 DAY 1 音樂祭</td>
                         </tr>
                         <tr>
                             <td><b>11/8 (日)</b></td>
-                            <td>北谷露台度假村</td>
-                            <td>🎵 WWW!!26 音樂祭 DAY 2 熱血開唱</td>
+                            <td>美浜北谷露台度假村</td>
+                            <td>🎵 WWW!!26 DAY 2 音樂祭</td>
                         </tr>
                         <tr>
                             <td><b>11/9 (一)</b></td>
                             <td>那霸久茂地</td>
-                            <td>牧志市場 / 壺屋 / 國際通 / Churasun6 秀</td>
+                            <td>豬肉蛋飯糰 / 牧志市場 / 壺屋 / 國際通 / Churasun6 秀</td>
                         </tr>
                         <tr>
                             <td><b>11/10 (二)</b></td>
                             <td>—</td>
-                            <td>波上宮 / 伴手禮採買 / ✈️ 21:00 班機返台</td>
+                            <td>Sports Depo天久店 / 傑克牛排館 / 採買 / ✈️ 21:00 返台</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
-            <div class="card">
-                <div class="card-title">🏨 住宿地點地圖 Quick Access</div>
-                <div style="display: flex; flex-direction: column; gap: 10px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 10px; border-radius: 8px;">
-                        <div>
-                            <div style="font-weight: bold;">前 3 晚：美浜北谷露台度假村</div>
-                            <div style="font-size: 0.8rem; color: #64748b;">Terrace Garden Mihama Resort</div>
-                        </div>
-                        <a href="https://maps.google.com/?q=Terrace+Garden+Mihama+Resort" target="_blank" class="map-btn">📍 地圖</a>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 10px; border-radius: 8px;">
-                        <div>
-                            <div style="font-weight: bold;">第 4 晚：雄志さんのアパートメント</div>
-                            <div style="font-size: 0.8rem; color: #64748b;">那霸市久茂地 2-20-7</div>
-                        </div>
-                        <a href="https://maps.google.com/?q=2-20-7+Kumoji,+Naha,+Okinawa" target="_blank" class="map-btn">📍 地圖</a>
-                    </div>
-                </div>
-            </div>
         </div>
 
-        <!-- TAB 1: DAY 1 -->
-        <div id="day1" class="tab-panel">
-            <div class="card">
-                <div class="card-title">
-                    <span>🟦 11/6（五）DAY 1：抵達沖繩 ➔ 北谷美國村</span>
+        <!-- DAY 1 -->
+        <div id="day1" class="tab-content">
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-title">🟦 11/6（五）抵達沖繩 ➔ 北谷美國村美食之旅</div>
+                    <div class="day-badge">DAY 1</div>
                 </div>
                 <div class="timeline">
                     <div class="item">
-                        <div class="item-time">07:00 - 09:00</div>
-                        <div class="item-header">
-                            <span class="item-title">✈️ 抵達那霸機場與入境</span>
-                            <a href="https://maps.google.com/?q=Naha+Airport" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">07:00 - 09:00</div>
+                        <div class="location">
+                            <span>✈️ 抵達那霸機場與入境</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Naha+Airport" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">辦理入境手續、領取行李。</div>
+                        <div class="desc">辦理入境手續、領取行李。</div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">09:00 - 10:00</div>
-                        <div class="item-header">
-                            <span class="item-title">🚌 搭車前往北谷美浜</span>
-                            <a href="https://maps.google.com/?q=Mihama+American+Village" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">09:00 - 10:00</div>
+                        <div class="location">
+                            <span>🚌 搭乘巴士前往北谷美浜</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Mihama+American+Village" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">搭乘機場巴士直達北谷，第一天不需進那霸市區。</div>
+                        <div class="desc">搭乘機場巴士直達北谷，這天不用進那霸市區。</div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">10:00 - 10:30</div>
-                        <div class="item-header">
-                            <span class="item-title">🏨 美浜北谷露台度假村寄放行李</span>
-                            <a href="https://maps.google.com/?q=Terrace+Garden+Mihama+Resort" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">10:00 - 10:30</div>
+                        <div class="location">
+                            <span>🏨 美浜北谷露台度假村寄放行李</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Terrace+Garden+Mihama+Resort" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">到達飯店先辦理寄放行李，輕鬆出遊。</div>
+                        <div class="desc">到達住宿點辦理寄放行李。</div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">10:30 - 14:00</div>
-                        <div class="item-header">
-                            <span class="item-title">🌴 美國村 ➔ Depot Island 散步</span>
-                            <a href="https://maps.google.com/?q=Depot+Island" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">10:30 - 13:30</div>
+                        <div class="location">
+                            <span>🌴 美國村 ➔ Depot Island 散步</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Depot+Island+Chatan" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">全程可步行逛街，感受沖繩美式復古與海岸風情。</div>
+                        <div class="desc">全程可步行逛街，感受沖繩美式風情。</div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">14:00</div>
-                        <div class="item-header">
-                            <span class="item-title">🍜 浜屋沖繩麵 (Hamaya Ramen)</span>
-                            <a href="https://maps.google.com/?q=Hamaya+Okinawa+Soba" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">13:30 - 14:30</div>
+                        <div class="location">
+                            <span>🌮 Taco Rice Cafe Kijimuna (美國村店)</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Taco+Rice+Cafe+Kijimuna+American+Village" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">經典必吃沖繩麵，豬軟骨肉入口即化。</div>
+                        <div class="desc">沖繩代表性美味！位於 Depot Island 內，必點滑嫩招牌「歐姆蛋塔可飯（Omutaco）」。</div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">15:30 - 18:00</div>
-                        <div class="item-header">
-                            <span class="item-title">🌅 Sunset Beach 看夕陽</span>
-                            <a href="https://maps.google.com/?q=Sunset+Beach+Okinawa" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">15:30 - 18:00</div>
+                        <div class="location">
+                            <span>🌅 Sunset Beach 看夕陽</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Sunset+Beach+Chatan+Okinawa" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">喝咖啡或吃 Blue Seal 冰淇淋，愜意等待海邊夕陽。</div>
+                        <div class="desc">喝咖啡或吃 Blue Seal 冰淇淋，準備看夕陽落海。</div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">19:00</div>
-                        <div class="item-header">
-                            <span class="item-title">🥩 第一晚燒肉晚餐 (Shimabutaya)</span>
-                            <a href="https://maps.google.com/?q=Shimabutaya+Tonkatsu+Dining+Chatan" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">19:00</div>
+                        <div class="location">
+                            <span>🥩 琉球之牛 北谷店 (和牛燒肉)</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=琉球の牛+北谷店" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">推薦品嚐在地名物阿古豬蒸籠料理或北谷和牛燒肉。</div>
+                        <div class="desc">美國村內頂級和牛燒肉首選，看完夕陽直接散步過去享用！</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- TAB 2: DAY 2 -->
-        <div id="day2" class="tab-panel">
-            <div class="card">
-                <div class="card-title">
-                    <span>🎵 11/7（六）DAY 2：WWW!!26 DAY 1</span>
+        <!-- DAY 2 -->
+        <div id="day2" class="tab-content">
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-title">🎵 11/7（六）WWW!!26 DAY 1</div>
+                    <div class="day-badge">DAY 2</div>
                 </div>
                 <div class="timeline">
                     <div class="item">
-                        <div class="item-time">10:30</div>
-                        <div class="item-header">
-                            <span class="item-title">🚕 北谷搭計程車前往會場</span>
-                            <a href="https://maps.google.com/?q=Ginowan+Tropical+Beach" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">10:30</div>
+                        <div class="location">
+                            <span>🚕 北谷搭計程車前往會場</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=宜野湾港マリーナ" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">會場地點：宜野灣港 Marina / Tropical Beach。</div>
+                        <div class="desc">地點：宜野灣港 Marina / Tropical Beach。</div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">11:00 - 20:30</div>
-                        <div class="item-header">
-                            <span class="item-title">🎸 WWW!!26 音樂祭 DAY 1</span>
-                            <a href="https://maps.google.com/?q=Ginowan+Marina" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">11:00 - 20:30</div>
+                        <div class="location">
+                            <span>🎸 WWW!!26 音樂祭 DAY 1 現場</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Ginowan+Tropical+Beach" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc" style="margin-bottom: 6px;">
-                            <span class="badge badge-blue">MONGOL800</span>
-                            <span class="badge badge-blue">AI</span>
-                            <span class="badge badge-blue">ACIDMAN</span>
-                            <span class="badge badge-blue">ELLEGARDEN</span>
-                            <span class="badge badge-blue">WANIMA</span>
+                        <div class="desc">
+                            <span class="tag">MONGOL800</span><span class="tag">AI</span><span class="tag">ACIDMAN</span><span class="tag">ELLEGARDEN</span><span class="tag">WANIMA</span>
                         </div>
-                        <div class="note-box">⚠️ 請注意 BRAHMAN 演出異動，請以現場或官方 App 最新公告為準。</div>
+                        <div class="note-box">⚠️ 請注意 BRAHMAN 異動，以官方 App 最新 Timetable 為準。</div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">21:30</div>
-                        <div class="item-header">
-                            <span class="item-title">🌙 返回美國村吃宵夜</span>
-                            <a href="https://maps.google.com/?q=American+Village+Okinawa" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">21:30</div>
+                        <div class="location">
+                            <span>🌙 返回美國村吃宵夜</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Mihama+American+Village" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">搭計程車返回北谷美國村，放鬆享用宵夜休息。</div>
+                        <div class="desc">搭計程車回北谷，放鬆吃宵夜休息。</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- TAB 3: DAY 3 -->
-        <div id="day3" class="tab-panel">
-            <div class="card">
-                <div class="card-title">
-                    <span>🎵 11/8（日）DAY 3：WWW!!26 DAY 2</span>
+        <!-- DAY 3 -->
+        <div id="day3" class="tab-content">
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-title">🎵 11/8（日）WWW!!26 DAY 2</div>
+                    <div class="day-badge">DAY 3</div>
                 </div>
                 <div class="timeline">
                     <div class="item">
-                        <div class="item-time">10:30</div>
-                        <div class="item-header">
-                            <span class="item-title">🚕 北谷前往宜野灣會場</span>
-                            <a href="https://maps.google.com/?q=Ginowan+Tropical+Beach" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">10:30</div>
+                        <div class="location">
+                            <span>🚕 北谷前往宜野灣會場</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=宜野湾港マリーナ" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">建議同樣搭乘計程車，省時又舒適。</div>
+                        <div class="desc">建議一樣搭乘計程車最輕鬆快捷。</div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">11:00 - 20:30</div>
-                        <div class="item-header">
-                            <span class="item-title">🎸 WWW!!26 音樂祭 DAY 2</span>
-                            <a href="https://maps.google.com/?q=Ginowan+Marina" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">11:00 - 20:30</div>
+                        <div class="location">
+                            <span>🎸 WWW!!26 音樂祭 DAY 2</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Ginowan+Tropical+Beach" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">
-                            <span class="badge badge-orange">ウルフルズ</span>
-                            <span class="badge badge-orange">黑夢</span>
-                            <span class="badge badge-orange">サンボマスター</span>
-                            <span class="badge badge-orange">MAN WITH A MISSION</span>
+                        <div class="desc">
+                            <span class="tag">ウルフルズ</span><span class="tag">黑夢</span><span class="tag">サンボマスター</span><span class="tag">MAN WITH A MISSION</span>
                         </div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">21:30</div>
-                        <div class="item-header">
-                            <span class="item-title">🌮 美國村 Taco Rice 慶功</span>
-                            <a href="https://maps.google.com/?q=Taco+Rice+Cafe+Kijimuna+American+Village" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">21:30</div>
+                        <div class="location">
+                            <span>🌮 美國村美式酒吧 / 宵夜慶功</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Mihama+American+Village" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">享用塔可飯 (Kijimuna) 與 Blue Seal 冰淇淋慶功！</div>
+                        <div class="desc">搭配 Blue Seal 冰淇淋或美式小酒吧做美味收尾。</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- TAB 4: DAY 4 -->
-        <div id="day4" class="tab-panel">
-            <div class="card">
-                <div class="card-title">
-                    <span>🟩 11/9（一）DAY 4：那霸市區 ✕ 63ANGEL 秀</span>
+        <!-- DAY 4 -->
+        <div id="day4" class="tab-content">
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-title">🟩 11/9（一）北谷 ➔ 那霸市區 ✕ 市集 ✕ 63ANGEL 秀</div>
+                    <div class="day-badge">DAY 4</div>
                 </div>
                 <div class="timeline">
                     <div class="item">
-                        <div class="item-time">09:00 - 10:30</div>
-                        <div class="item-header">
-                            <span class="item-title">🚕 退房移動至那霸久茂地</span>
-                            <a href="https://maps.google.com/?q=2-20-7+Kumoji,+Naha,+Okinawa" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">09:00 - 10:30</div>
+                        <div class="location">
+                            <span>🚕 退房前往那霸久茂地</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=那覇市久茂地2-20-7" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">入住：雄志さんのアパートメント (久茂地 2-20-7)，先寄放行李。</div>
+                        <div class="desc">入住：雄志さんのアパートメント (那霸市久茂地 2-20-7)。先寄放行李。</div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">11:30 - 12:30</div>
-                        <div class="item-header">
-                            <span class="item-title">🍜 OKINAWA SOBA DEN 午餐</span>
-                            <a href="https://maps.google.com/?q=OKINAWA+SOBA+DEN+Kumoji" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">11:30 - 12:30</div>
+                        <div class="location">
+                            <span>🍙 豬肉蛋飯糰 牧志本店 (Potama)</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=pork+tamago+onigiri+makishi" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">久茂地在地口碑超高的沖繩麵。</div>
+                        <div class="desc">沖繩必吃人氣美食！熱騰騰現做午餐，極具特色的豬肉蛋飯糰。</div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">13:00 - 14:30</div>
-                        <div class="item-header">
-                            <span class="item-title">🐟 第一牧志公設市場</span>
-                            <a href="https://maps.google.com/?q=First+Makishi+Public+Market" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">13:00 - 14:30</div>
+                        <div class="location">
+                            <span>🐟 第一牧志公設市場</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=第一牧志公設市場" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">品嚐新鮮海鮮、海葡萄、花生豆腐與沖繩特色水果。</div>
+                        <div class="desc">嚐鮮海鮮、海葡萄、花生豆腐與沖繩水果。</div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">14:30 - 16:00</div>
-                        <div class="item-header">
-                            <span class="item-title">🏺 壺屋やちむん通 陶瓷街</span>
-                            <a href="https://maps.google.com/?q=Tsuboya+Yachimun+Street" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">14:30 - 16:00</div>
+                        <div class="location">
+                            <span>🏺 壺屋やちむん通 陶瓷街</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=壺屋やちむん通り" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">悠閒漫步陶瓷老街，挑選質感手作風獅爺與陶杯。</div>
+                        <div class="desc">挑選風獅爺 (シーサー) 與手作陶藝杯作為紀念品。</div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">16:00 - 18:30</div>
-                        <div class="item-header">
-                            <span class="item-title">🛍️ 國際通 ➔ Washita Shop 採買</span>
-                            <a href="https://maps.google.com/?q=Okinawa+Washita+Shop+Kokusai+Dori" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">16:00 - 18:30</div>
+                        <div class="location">
+                            <span>🛍️ 國際通 ➔ Washita Shop 買伴手禮</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Okinawa+Washita+Shop+Kokusai+Dori" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">採購紅芋塔、雪鹽、黑糖與沖繩泡盛等伴手禮。</div>
+                        <div class="desc">採買紅芋塔、雪鹽、黑糖、泡盛。</div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">18:30 - 19:30</div>
-                        <div class="item-header">
-                            <span class="item-title">🍽️ 晚餐：Yuunangi 沖繩家庭料理</span>
-                            <a href="https://maps.google.com/?q=Yuunangi+Naha" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">18:30 - 19:30</div>
+                        <div class="location">
+                            <span>🍽️ 晚餐：Yuunangi 沖繩料理</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Yuunangi+Naha" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">必吃老字號道地沖繩家常菜（建議勿吃太飽留胃口）。</div>
+                        <div class="desc">經典道地沖繩家常料理（晚餐不要吃太飽）。</div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">20:00 - 22:00</div>
-                        <div class="item-header">
-                            <span class="item-title">💃 Churasun6 (63ANGEL 體驗)</span>
-                            <a href="https://maps.google.com/?q=Churasun6+Naha" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">20:00 - 22:00</div>
+                        <div class="location">
+                            <span>💃 Churasun6 (63ANGEL 體驗)</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Churasun6+沖縄" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">地址：那霸市松山 1-5-1。久茂地步行可達，建議預約 20:30 第一場。</div>
+                        <div class="desc">地址：那霸市松山 1-5-1。從久茂地步行即可抵達，建議預約 20:30 第一部。</div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">22:00</div>
-                        <div class="item-header">
-                            <span class="item-title">🍜 看完秀吃宵夜沖繩麵</span>
-                            <a href="https://maps.google.com/?q=OKINAWA+SOBA+DEN+Kumoji" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">22:00</div>
+                        <div class="location">
+                            <span>🌮 宵夜：Tacos Ya 國際通店 / 居酒屋</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Tacos+Ya+Kokusai+Dori" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">OKINAWA SOBA DEN 營業至深夜，散步吃宵夜回住宿。</div>
+                        <div class="desc">看完秀後品嚐現做美式 Tacos 或松山周邊串燒居酒屋。</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- TAB 5: DAY 5 -->
-        <div id="day5" class="tab-panel">
-            <div class="card">
-                <div class="card-title">
-                    <span>🟨 11/10（二）DAY 5：波上宮 ➔ 採買 ➔ 返台</span>
+        <!-- DAY 5 -->
+        <div id="day5" class="tab-content">
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-title">🟨 11/10（二）Sports Depo 天久店 ➔ 傑克牛排 ➔ 21:00 班機回台</div>
+                    <div class="day-badge">DAY 5</div>
                 </div>
                 <div class="timeline">
                     <div class="item">
-                        <div class="item-time">09:00 - 11:00</div>
-                        <div class="item-header">
-                            <span class="item-title">🌊 波上宮 ➔ 波之上海灘</span>
-                            <a href="https://maps.google.com/?q=Naminoue+Shrine" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">09:30 - 12:00</div>
+                        <div class="location">
+                            <span>🛍️ Sports Depo 天久店 運動用品大採買</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Sports+Depo+天久店" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">參拜懸崖上的絕景神社，海灘散步拍照。</div>
+                        <div class="desc">沖繩超大型運動用品專賣店，服飾、球鞋、戶外裝備一次齊全。</div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">11:30</div>
-                        <div class="item-header">
-                            <span class="item-title">🍜 沖繩麵 EIBUN</span>
-                            <a href="https://maps.google.com/?q=Okinawa+Soba+EIBUN" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">12:30 - 14:00</div>
+                        <div class="location">
+                            <span>🥩 傑克牛排館 (Jack's Steak House)</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Jack's+Steak+House+Naha" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">超人氣創新風味沖繩麵（位於壺屋周邊）。</div>
+                        <div class="desc">沖繩戰後老字號美式牛排館！軟嫩多汁的 Tenderloin 牛排是必吃經典。</div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">13:00 - 16:00</div>
-                        <div class="item-header">
-                            <span class="item-title">🛍️ 最後補貨與 WWW!!26 紀念品</span>
-                            <a href="https://maps.google.com/?q=Kokusai+Dori+Naha" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">14:00 - 16:30</div>
+                        <div class="location">
+                            <span>🛍️ 國際通最後補貨與 WWW!!26 周邊</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=那霸國際通商店街" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">國際通進行最後的伴手禮清單補齊。</div>
+                        <div class="desc">採購給親友同事的伴手禮與音樂祭紀念品。</div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">17:00</div>
-                        <div class="item-header">
-                            <span class="item-title">🧳 返回久茂地拿行李前往機場</span>
-                            <a href="https://maps.google.com/?q=Naha+Airport" target="_blank" class="map-btn">📍 地圖</a>
+                        <div class="time">17:00</div>
+                        <div class="location">
+                            <span>🧳 返回久茂地拿行李前往機場</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Naha+Airport" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="item-desc">建議於 18:00 前抵達那霸機場辦理登機。</div>
+                        <div class="desc">建議 18:00 前抵達那霸機場辦理登機。</div>
                     </div>
-
                     <div class="item">
-                        <div class="item-time">21:00</div>
-                        <div class="item-header">
-                            <span class="item-title">✈️ 搭乘班機返抵台灣</span>
+                        <div class="time">21:00</div>
+                        <div class="location">
+                            <span>✈️ 搭乘班機返抵台灣</span>
                         </div>
-                        <div class="item-desc">圓滿結束 5 天 4 夜音樂與美食之旅！</div>
+                        <div class="desc">圓滿結束沖繩音樂與美食之旅！</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- TAB 6: 音樂祭與購物指南 -->
-        <div id="info" class="tab-panel">
-            <div class="card">
-                <div class="card-title">🎸 WWW!!26 音樂祭情報</div>
-                <div style="font-size: 0.9rem; color: #334155;">
-                    <p style="margin-bottom: 8px;"><b>會場名稱：</b>宜野灣港 Marina / Tropical Beach</p>
-                    <p style="margin-bottom: 8px;"><b>交通建議：</b>去程與回程皆建議與同行夥伴搭乘計程車，省時便捷。</p>
-                    <a href="https://maps.google.com/?q=Ginowan+Tropical+Beach" target="_blank" class="map-btn" style="margin-top: 4px;">📍 開啟會場 Google 地圖</a>
+        <!-- BEYBLADE MAP TAB -->
+        <div id="beyblade" class="tab-content">
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-title">⚙️ 沖繩戰鬥陀螺 (Beyblade X) 尋寶地圖</div>
+                    <div class="day-badge">尋寶攻略</div>
                 </div>
-            </div>
-
-            <div class="card">
-                <div class="card-title">🎁 伴手禮必買清單</div>
-                <ul style="padding-left: 20px; font-size: 0.9rem; color: #334155; line-height: 1.8;">
-                    <li>御菓子御殿 - 紅芋塔 🍠</li>
-                    <li>宮古島雪鹽餅乾 🧂</li>
-                    <li>沖繩黑糖與泡盛辣椒油 🌶️</li>
-                    <li>Washita Shop 限定沖繩周邊 🛍️</li>
-                </ul>
+                <div class="timeline">
+                    <div class="item">
+                        <div class="time">那霸市區 / 新都心</div>
+                        <div class="location">
+                            <span>🏬 Kojima x Bic Camera 那霸店</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Kojima+x+Bic+Camera+Naha" target="_blank" class="map-btn">📍 地圖</a>
+                        </div>
+                        <div class="desc">設有大型玩具部門！Takara Tomy 專櫃品項齊全，新品陀螺與發射器常設點，近 Sports Depo。</div>
+                    </div>
+                    <div class="item">
+                        <div class="time">那霸市區 / 新都心</div>
+                        <div class="location">
+                            <span>🧸 玩具反斗城 那霸新都心店 (Toys R Us)</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Toys+R+Us+Naha+Shintoshin" target="_blank" class="map-btn">📍 地圖</a>
+                        </div>
+                        <div class="desc">位於 Apple Town 內，沖繩最大的玩具反斗城！經常有陀螺試玩台與獨家優惠。</div>
+                    </div>
+                    <div class="item">
+                        <div class="time">那霸市區 / 新都心</div>
+                        <div class="location">
+                            <span>📺 山田電機 Yamada Denki Tecc Land 那霸店</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Yamada+Denki+Tecc+Land+Naha" target="_blank" class="map-btn">📍 地圖</a>
+                        </div>
+                        <div class="desc">頂樓設有玩具專區，常有驚喜折扣或非熱門款盒裝現貨。</div>
+                    </div>
+                    <div class="item">
+                        <div class="time">宜野灣 / 北谷周邊</div>
+                        <div class="location">
+                            <span>🐧 MEGA 唐吉訶德 宜野灣店</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=MEGA+Don+Quijote+Ginowan" target="_blank" class="map-btn">📍 地圖</a>
+                        </div>
+                        <div class="desc">音樂祭會場附近！超大型 MEGA 店型，玩具區經常補貨陀螺隨機盒與套組，營業時間長。</div>
+                    </div>
+                    <div class="item">
+                        <div class="time">北谷美浜周邊</div>
+                        <div class="location">
+                            <span>🛍️ AEON 北谷店 (美浜直營店)</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=AEON+Chatan+Shopping+Center" target="_blank" class="map-btn">📍 地圖</a>
+                        </div>
+                        <div class="desc">住宿美浜對面！直營玩具區也是發售日熱門補貨點。</div>
+                    </div>
+                    <div class="item">
+                        <div class="time">二手/二手古本</div>
+                        <div class="location">
+                            <span>📚 BOOK-OFF 那霸小祿店</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=BOOK+OFF+Naha+Oroku" target="_blank" class="map-btn">📍 地圖</a>
+                        </div>
+                        <div class="desc">挖寶二手罕見零件、舊世代陀螺或單零件特賣區（離機場不遠）。</div>
+                    </div>
+                </div>
             </div>
         </div>
 
-    </div>
-
-    <!-- 手機版底部快速導覽列 -->
-    <div class="bottom-bar">
-        <button class="bottom-btn active" onclick="switchTab('overview')">
-            <span>📅</span>總覽
-        </button>
-        <button class="bottom-btn" onclick="switchTab('day1')">
-            <span>D1</span>11/6
-        </button>
-        <button class="bottom-btn" onclick="switchTab('day2')">
-            <span>D2</span>11/7
-        </button>
-        <button class="bottom-btn" onclick="switchTab('day3')">
-            <span>D3</span>11/8
-        </button>
-        <button class="bottom-btn" onclick="switchTab('day4')">
-            <span>D4</span>11/9
-        </button>
-        <button class="bottom-btn" onclick="switchTab('day5')">
-            <span>D5</span>11/10
-        </button>
     </div>
 
     <script>
         function switchTab(tabId) {
-            // 隱藏所有 tab-panel
-            const panels = document.querySelectorAll('.tab-panel');
-            panels.forEach(panel => panel.classList.remove('active'));
-
-            // 取消所有 tab 按鈕的 active 狀態
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            tabBtns.forEach(btn => btn.classList.remove('active'));
-
-            const bottomBtns = document.querySelectorAll('.bottom-btn');
-            bottomBtns.forEach(btn => btn.classList.remove('active'));
-
-            // 顯示目標 tab-panel
-            const targetPanel = document.getElementById(tabId);
-            if (targetPanel) {
-                targetPanel.classList.add('active');
-            }
-
-            // 標示對應頂部 tab 按鈕 active
-            const targetBtns = document.querySelectorAll(`[onclick="switchTab('${tabId}')"]`);
-            targetBtns.forEach(btn => btn.classList.add('active'));
-
-            // 自動捲動至頂部
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
+
 </body>
 </html>
